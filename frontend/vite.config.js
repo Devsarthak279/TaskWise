@@ -1,26 +1,34 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import nodePolyfills from "vite-plugin-node-polyfills";
+import { NodeGlobalsPolyfillPlugin } from "@esbuild-plugins/node-globals-polyfill";
+import { NodeModulesPolyfillPlugin } from "@esbuild-plugins/node-modules-polyfill";
 
 export default defineConfig({
-  plugins: [
-    react(),
-    nodePolyfills({
-      protocolImports: true, // Adds polyfills for Node.js protocols
-    }),
-  ],
+  plugins: [react()],
   build: {
-    outDir: "dist", // Ensure this matches the publish directory in netlify.toml
     target: "esnext", // Ensure modern JavaScript support
     rollupOptions: {
       output: {
-        format: "esm", // Use ES module format for modern environments
+        format: "esm",
       },
+    },
+  },
+  optimizeDeps: {
+    esbuildOptions: {
+      define: {
+        global: "globalThis",
+      },
+      plugins: [
+        NodeGlobalsPolyfillPlugin({
+          buffer: true,
+        }),
+        NodeModulesPolyfillPlugin(),
+      ],
     },
   },
   resolve: {
     alias: {
-      crypto: "crypto-browserify", // Polyfill crypto if any dependency requires it
+      crypto: "crypto-browserify",
     },
   },
 });
