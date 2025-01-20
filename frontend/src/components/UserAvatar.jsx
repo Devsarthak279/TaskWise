@@ -16,7 +16,7 @@ const UserAvatar = () => {
 
   const logoutHandler = async () => {
     try {
-      const response = await fetch('http://localhost:3000/signout', {
+      const response = await fetch('https://taskwise-mh3g.onrender.com/signout', {
         method: 'POST',
         credentials: 'include', // Include credentials for the server to clear the cookie
       });

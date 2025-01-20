@@ -23,7 +23,7 @@ const AddUser = ({ open, setOpen, userData }) => {
 
   const handleOnSubmit = async (data) => {
     try {
-      await axios.post("http://localhost:3000/signup", data); // Make POST request to /signup endpoint
+      await axios.post("https://taskwise-mh3g.onrender.com/signup", data); // Make POST request to /signup endpoint
       // Handle success (e.g., show success message)
       console.log("User created successfully");
     } catch (error) {

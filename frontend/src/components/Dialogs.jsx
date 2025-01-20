@@ -23,7 +23,7 @@ export default function ConfirmatioDialog({
 
   const handleDeleteUser = async () => {
     try {
-      await axios.delete(`http://localhost:3000/users/${userId}`);
+      await axios.delete(`https://taskwise-mh3g.onrender.com/users/${userId}`);
       onClick();
     } catch (error) {
       console.error("Error deleting user:", error);

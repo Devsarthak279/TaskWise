@@ -34,7 +34,7 @@ const AddTask = ({ open, setOpen }) => {
         files: files, // Include uploaded files
       };
 
-      const response = await axios.post("http://localhost:3000/tasks", formData);
+      const response = await axios.post("https://taskwise-mh3g.onrender.com/tasks", formData);
 
       console.log(response.data);
       setOpen(false);
