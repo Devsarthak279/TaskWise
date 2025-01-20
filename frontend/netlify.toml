@@ -3,7 +3,7 @@
   publish = "dist"
 
 [build.environment]
-  NODE_VERSION = "16" # Optional, specify Node.js version if needed
+  NODE_VERSION = "18" # Optional, specify Node.js version if needed
 
 [[redirects]]
   from = "/*"
